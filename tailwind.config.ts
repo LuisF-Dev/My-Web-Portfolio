@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -8,6 +9,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes:{
+        bounce:{
+          "0%,100%":{transform: "translateX(0)"},
+          "50%":{transform:"rotate(15deg)"}
+        }
+        
+      },animation:{
+        bounce:"bounce 3s infinite"
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

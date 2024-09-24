@@ -1,50 +1,42 @@
 import { jetbrains } from "@/fonts";
 import clsx from "clsx";
 import Link from "next/link";
+import { styleButton } from "../ClassesTailwind";
 
 function Navbar() {
     return (
-        <div className="bg-jsDark py-4 flex flex-row items-center  justify-end">
-            <Link href={"/about"}>
-                <button
-                    className={clsx(
-                        jetbrains.className,
-                        "bg-jsYellow rounded-md p-4 text-black hover:bg-jsGray transition hover:text-white mx-4 text-base"
-                    )}
-                >
-                    About me
-                </button>
-            </Link>
-            <Link href={"/projects"}>
-                <button
-                    className={clsx(
-                        jetbrains.className,
-                        "bg-jsYellow rounded-md p-4 text-black hover:bg-jsGray transition hover:text-white mx-4 text-base"
-                    )}
-                >
-                    Projects
-                </button>
-            </Link>
-            <Link href={"/technologies"}>
-                <button
-                    className={clsx(
-                        jetbrains.className,
-                        "bg-jsYellow rounded-md p-4 text-black hover:bg-jsGray transition hover:text-white mx-4 text-base"
-                    )}
-                >
-                    Technologies
-                </button>
-            </Link>
-            <Link href={"/"}>
-                <button
-                    className={clsx(
-                        jetbrains.className,
-                        "bg-jsYellow rounded-md p-4 text-black hover:bg-jsGray transition hover:text-white mx-4 text-base"
-                    )}
-                >
-                    Homepage
-                </button>
-            </Link>
+        <div className="bg-jsDark py-4 flex flex-row items-center justify-between ">
+            <div
+                className={clsx(
+                    "px-3 text-3xl font-semibold   from-orange-500 to-jsYellow bg-gradient-to-b bg-clip-text text-transparent",
+                    jetbrains.className
+                )}
+            >
+                LuisF-Dev
+            </div>
+            <div>
+                <Link href={"/"}>
+                    <button className={clsx(jetbrains.className, styleButton)}>
+                        Homepage
+                    </button>
+                </Link>
+
+                <Link href={"/projects"}>
+                    <button className={clsx(jetbrains.className, styleButton)}>
+                        Projects
+                    </button>
+                </Link>
+                <Link href={"/technologies"}>
+                    <button className={clsx(jetbrains.className, styleButton)}>
+                        Technologies
+                    </button>
+                </Link>
+                <Link href={"/about"}>
+                    <button className={clsx(jetbrains.className, styleButton)}>
+                        About me
+                    </button>
+                </Link>
+            </div>
         </div>
     );
 }

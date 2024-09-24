@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import ThreeSquare from "./components/homepage/ThreeSquare";
-import { jetbrains } from "@/fonts";
+import { jetbrains, playpen_Sans } from "@/fonts";
 import Description from "./components/homepage/Description";
 
 function Homepage() {
@@ -8,6 +8,16 @@ function Homepage() {
         <div className="flex flex-col">
             {" "}
             {/* flex vertical  */}
+            <div>
+                <p
+                    className={clsx(
+                        "text-5xl font-semibold",
+                        playpen_Sans.className
+                    )}
+                >
+                    <p className="animate-bounce">👋</p> Welcome
+                </p>
+            </div>
             <Description />
             <ThreeSquare
                 className={clsx(
