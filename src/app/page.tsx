@@ -8,14 +8,17 @@ function Homepage() {
         <div className="flex flex-col">
             {" "}
             {/* flex vertical  */}
-            <div>
+            <div className="mx-8 mt-10  ">
                 <p
                     className={clsx(
-                        "text-5xl font-semibold",
+                        "text-5xl font-semibold flex items-center",
                         playpen_Sans.className
                     )}
                 >
-                    <p className="animate-bounce">👋</p> Welcome
+                    <div className="animate-bounce  inline-block h-14 w-14 text-5xl">
+                        👋
+                    </div>{" "}
+                    <p className="px-2">Welcome</p>
                 </p>
             </div>
             <Description />

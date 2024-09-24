@@ -11,12 +11,12 @@ const config: Config = {
     extend: {
       keyframes:{
         bounce:{
-          "0%,100%":{transform: "translateX(0)"},
-          "50%":{transform:"rotate(15deg)"}
+          "0%,100%":{transform: "translateX(0deg)"},
+          "50%":{transform:"rotate(-15deg)"}
         }
         
       },animation:{
-        bounce:"bounce 3s infinite"
+        bounce:"bounce 2s infinite"
       },
       colors: {
         background: "var(--background)",
