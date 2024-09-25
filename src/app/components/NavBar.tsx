@@ -2,6 +2,8 @@ import { jetbrains } from "@/fonts";
 import clsx from "clsx";
 import Link from "next/link";
 import { styleButton } from "../ClassesTailwind";
+import Image from "next/image";
+import myImage from "../images/traducir.png";
 
 function Navbar() {
     return (
@@ -36,6 +38,14 @@ function Navbar() {
                         About me
                     </button>
                 </Link>
+            </div>
+            <div>
+                <Image
+                    src={myImage}
+                    alt="traducir, translate"
+                    width={48}
+                    height={48}
+                />
             </div>
         </div>
     );

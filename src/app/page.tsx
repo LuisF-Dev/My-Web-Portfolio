@@ -1,11 +1,12 @@
 import clsx from "clsx";
-import ThreeSquare from "./components/homepage/ThreeSquare";
-import { jetbrains, playpen_Sans } from "@/fonts";
+
+import { playpen_Sans } from "@/fonts";
 import Description from "./components/homepage/Description";
+import Technologies from "./components/homepage/technologies/technologies";
 
 function Homepage() {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col justify-center">
             {" "}
             {/* flex vertical  */}
             <div className="mx-8 mt-10  ">
@@ -22,12 +23,7 @@ function Homepage() {
                 </p>
             </div>
             <Description />
-            <ThreeSquare
-                className={clsx(
-                    "bg-jsGray rounded-md p-5 m-5",
-                    jetbrains.className
-                )}
-            />
+            <Technologies />
         </div>
     );
 }
