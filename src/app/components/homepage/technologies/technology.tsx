@@ -13,7 +13,7 @@ function Technology({ label, srcImage }: technology) {
         <div
             className={clsx(
                 gradient,
-                " rounded-md py-5 px-1 md:p-5 m-2 inline-block text-center",
+                " rounded-md py-5 px-8 md:p-5 m-2  inline-block text-center",
                 jetbrains.className
             )}
         >
