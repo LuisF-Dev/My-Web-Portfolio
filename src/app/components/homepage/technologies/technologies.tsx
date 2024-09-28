@@ -2,6 +2,14 @@ import clsx from "clsx";
 import Technology from "./technology";
 import { gradient } from "@/app/ClassesTailwind";
 import { jetbrains } from "@/fonts";
+import {
+    faGithub,
+    faJs,
+    faNodeJs,
+    faPython,
+    faReact,
+} from "@fortawesome/free-brands-svg-icons";
+import { faN } from "@fortawesome/free-solid-svg-icons";
 
 function Technologies() {
     return (
@@ -16,11 +24,30 @@ function Technologies() {
                 Skills
             </div>
             <div className="lg:p-5 sm:p-3 text-sm lg:text-base grid grid-flow-col grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 bg-jsDark xl:mx-80 rounded-md text-black my-10 lg:mx-70">
-                <Technology label="JavaScript" />
-                <Technology label="TypeScript" />
-                <Technology label="NextJs" /> <Technology label="NodeJs" />{" "}
-                <Technology label="React" /> <Technology label="ExpressJs" />{" "}
-                <Technology label="Python" /> <Technology label="HTML" />
+                <Technology label="JavaScript" icon={faJs} className="bgcolo" />
+                <Technology
+                    label="TypeScript"
+                    icon={faJs}
+                    className="text-blue-400 bg-white"
+                />
+                <Technology
+                    label="NextJs"
+                    icon={faN}
+                    className="text-white rounded-full bg-black p-1"
+                />{" "}
+                <Technology label="NodeJs" icon={faNodeJs} />{" "}
+                <Technology
+                    label="React"
+                    icon={faReact}
+                    className="text-blue-500"
+                />{" "}
+                <Technology
+                    label="ExpressJs"
+                    icon={faJs}
+                    className={"bg-black text-jsYellow"}
+                />{" "}
+                <Technology label="Python" icon={faPython} />{" "}
+                <Technology label="Git and Github" icon={faGithub} />
             </div>
         </>
     );
