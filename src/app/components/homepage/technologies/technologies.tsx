@@ -24,7 +24,11 @@ function Technologies() {
                 Skills
             </div>
             <div className="lg:p-5 sm:p-3 text-sm lg:text-base grid grid-flow-col grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 bg-jsDark xl:mx-80 rounded-md text-black my-10 lg:mx-70">
-                <Technology label="JavaScript" icon={faJs} className="bgcolo" />
+                <Technology
+                    label="JavaScript"
+                    icon={faJs}
+                    className={"bg-black text-jsYellow"}
+                />
                 <Technology
                     label="TypeScript"
                     icon={faJs}
@@ -41,11 +45,7 @@ function Technologies() {
                     icon={faReact}
                     className="text-blue-500"
                 />{" "}
-                <Technology
-                    label="ExpressJs"
-                    icon={faJs}
-                    className={"bg-black text-jsYellow"}
-                />{" "}
+                <Technology label="ExpressJs" icon={faJs} className="bgcolo" />{" "}
                 <Technology label="Python" icon={faPython} />{" "}
                 <Technology label="Git and Github" icon={faGithub} />
             </div>
