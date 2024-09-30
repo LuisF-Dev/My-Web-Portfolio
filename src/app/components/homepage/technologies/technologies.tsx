@@ -23,7 +23,7 @@ function Technologies() {
             >
                 Skills
             </div>
-            <div className="lg:p-5 sm:p-3 text-sm lg:text-base grid grid-flow-col grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 bg-jsDark xl:mx-80 rounded-md text-black my-10 lg:mx-70">
+            <div className="lg:p-5 sm:p-3 text-sm lg:text-base grid grid-flow-col grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 bg-jsDark xl:mx-70 rounded-md text-black my-10 lg:mx-70">
                 <Technology
                     label="JavaScript"
                     icon={faJs}

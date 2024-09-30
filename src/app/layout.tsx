@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import Navbar from "./components/Navbar/NavBar";
-import Footer from "./components/homepage/Footer";
+import Footer from "./components/footer/Footer";
 
 export const metadata: Metadata = {
     title: "Portafolio Web",
@@ -20,7 +20,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={` antialiased from-gray-800 to-black bg-gradient-to-b  `}
+                className={`flex flex-col antialiased from-gray-800 to-black bg-gradient-to-b min-h-screen `}
             >
                 <Navbar />
                 {children}
