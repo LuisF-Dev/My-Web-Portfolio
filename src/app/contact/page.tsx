@@ -5,6 +5,9 @@ import clsx from "clsx";
 import { useState } from "react";
 import { gradient, gradient_text } from "../ClassesTailwind";
 import { useRouter } from "next/navigation";
+import Name from "../components/contact/Name";
+import Reason from "../components/contact/Reason";
+import Message from "../components/contact/Message";
 
 const ContactForm = () => {
     const [name, setName] = useState<string>("");
@@ -48,74 +51,17 @@ const ContactForm = () => {
                 >
                     Contact Me
                 </h1>
-                <div className="mb-4">
-                    <label
-                        className={clsx(
-                            jetbrains.className,
-                            "block text-white text-sm font-bold mb-2"
-                        )}
-                        htmlFor="recipient"
-                    >
-                        Name
-                    </label>
-                    <input
-                        id="name"
-                        type="text"
-                        placeholder="Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="w-full px-3 py-2 border text-black border-gray-300 rounded-md"
-                        required
-                    />
-                </div>
+                <Name onChange={(e) => setName(e.target.value)} name={name} />
 
-                <div className="mb-4">
-                    <label
-                        className={clsx(
-                            jetbrains.className,
-                            "block text-white text-sm font-bold mb-2"
-                        )}
-                        htmlFor="reason"
-                    >
-                        Reason
-                    </label>
-                    <select
-                        id="reason"
-                        value={reason}
-                        onChange={(e) => setReason(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 text-black rounded-md"
-                        required
-                    >
-                        <option value="">Select a reason</option>
-                        <option value="Portfolio Feedback ">
-                            Portfolio Feedback{" "}
-                        </option>
-                        <option value="General Inquiry">General Inquiry</option>
-                        <option value="Job Opportunity">Job Opportunity</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
+                <Reason
+                    reason={reason}
+                    onChange={(e) => setReason(e.target.value)}
+                />
 
-                <div className="mb-4">
-                    <label
-                        className={clsx(
-                            jetbrains.className,
-                            "block text-white text-sm font-bold mb-2"
-                        )}
-                        htmlFor="message"
-                    >
-                        Message
-                    </label>
-                    <textarea
-                        id="message"
-                        placeholder="Write your message here..."
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        className="w-full px-3 py-2 border text-black border-gray-300 rounded-md"
-                        rows={5}
-                        required
-                    ></textarea>
-                </div>
+                <Message
+                    message={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                />
 
                 <button
                     type="submit"
