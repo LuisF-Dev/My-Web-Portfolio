@@ -1,11 +1,12 @@
 import { gradient_text } from "@/app/ClassesTailwind";
 import { jetbrains, playpen_Sans } from "@/fonts";
 import clsx from "clsx";
+
 import Image from "next/image";
 
 function Description() {
     return (
-        <div className="flex flex-row mx-5 p-4 m-3">
+        <div className="flex flex-row mx-5 p-4 m-3 mb-9">
             <div
                 className={clsx(
                     jetbrains.className,

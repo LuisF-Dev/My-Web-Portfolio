@@ -12,6 +12,7 @@ import Message from "../components/contact/Message";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { AnimatePresence, motion } from "framer-motion";
+import { ThreeDots } from "react-loader-spinner";
 
 const ContactForm = () => {
     const [name, setName] = useState<string>("");
@@ -103,11 +104,21 @@ const ContactForm = () => {
                     type="submit"
                     className={clsx(
                         gradient,
-                        "w-full  text-black font-bold py-2 px-4 rounded-md mt-3 hover:bg-zinc-800 hover:text-white transition hover:to-transparent hover:from-transparent disabled:to-transparent disabled:from-transparent disabled:bg-gray-500 disabled:text-gray-700"
+                        "w-full  text-black font-bold py-2 px-4 rounded-md mt-3 hover:bg-zinc-800 hover:text-white transition hover:to-transparent hover:from-transparent disabled:to-transparent disabled:from-transparent disabled:bg-gray-500 disabled:text-gray-700 flex flex-row items-center"
                     )}
                     disabled={isSending}
                 >
-                    Send Message
+                    <p className="mr-60">Send Message </p>
+                    <ThreeDots
+                        visible={isSending}
+                        height="35"
+                        width="35"
+                        color="#ffd600"
+                        radius="9"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                    />
                 </button>
             </form>
             <AnimatePresence>

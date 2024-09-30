@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import Technology from "./technology";
 import { gradient } from "@/app/ClassesTailwind";
@@ -13,7 +15,7 @@ import { faN } from "@fortawesome/free-solid-svg-icons";
 
 function Technologies() {
     return (
-        <>
+        <div className="flex flex-col my-24 items-center justify-center">
             <div
                 className={clsx(
                     "p-4 rounded-md w-40 text-black text-center text-2xl",
@@ -49,7 +51,7 @@ function Technologies() {
                 <Technology label="Python" icon={faPython} />{" "}
                 <Technology label="Git and Github" icon={faGithub} />
             </div>
-        </>
+        </div>
     );
 }
 

@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { playpen_Sans } from "@/fonts";
 import Description from "./components/homepage/Description";
 import Technologies from "./components/homepage/technologies/technologies";
+import AboutMe from "./components/homepage/AboutMe";
 
 function Homepage() {
     return (
@@ -25,6 +26,7 @@ function Homepage() {
                 </div>
             </div>
             <Description />
+            <AboutMe />
             <Technologies />
         </div>
     );
