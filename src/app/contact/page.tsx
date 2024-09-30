@@ -37,7 +37,7 @@ const ContactForm = () => {
                     setIsSending(true);
                     if (wasResolved) {
                         const res = await fetch(
-                            "http://localhost:3000/api/contactme",
+                            "https://my-web-portfolio-ccb799ypm-luis-projects-04dcd64f.vercel.app/api/contactme",
                             {
                                 method: "POST",
                                 body: JSON.stringify({ name, reason, message }),
