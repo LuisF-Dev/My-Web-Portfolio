@@ -33,7 +33,7 @@ function LinkFooter({
                                 ? " rounded-md py-5 px-8 md:p-5 m-2 flex flex-row items-center  text-center"
                                 : containerClassName,
                             jetbrains.className,
-                            "flex flex-row items-center hover:bg-gray-700 transition  p-2 rounded-md"
+                            "flex flex-row items-center hover:bg-gray-700 transition  p-1 md:p-2 rounded-md"
                         )}
                     >
                         {" "}

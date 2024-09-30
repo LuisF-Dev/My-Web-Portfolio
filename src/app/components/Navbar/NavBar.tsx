@@ -11,14 +11,17 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ButtonNavbar from "./Button";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 function Navbar() {
     const router = useRouter();
     const [isClosed, setIsClosed] = useState(true);
+
     return (
-        <div className="bg-jsDark py-4 flex flex-row items-center justify-between ">
+        <div className="bg-jsDark py-4 flex flex-row items-center justify-between z-40">
             <div
                 className={clsx(
-                    "px-3 text-3xl font-semibold   from-orange-500 to-jsYellow bg-gradient-to-b bg-clip-text text-transparent",
+                    "px-3 text-3xl font-semibold z-40  from-orange-500 to-jsYellow bg-gradient-to-b bg-clip-text text-transparent",
                     jetbrains.className
                 )}
             >
@@ -37,8 +40,8 @@ function Navbar() {
                     Github
                 </ButtonNavbar>
 
-                <ButtonNavbar onClick={() => router.push("/about")}>
-                    About me
+                <ButtonNavbar onClick={() => router.push("/contact")}>
+                    Contact Me
                 </ButtonNavbar>
             </div>
             <div className="hidden lg:block">
@@ -59,26 +62,36 @@ function Navbar() {
                     setIsClosed(isClosed ? false : true);
                 }}
             />
-            {isClosed ? (
-                ""
-            ) : (
-                <div className="grid grid-flow-row grid-cols-1 grid-rows-4 absolute bg-jsDark lg:hidden w-full z-10 top-20 pb-4">
-                    <ButtonNavbar onClick={() => router.push("/")}>
-                        Homepage
-                    </ButtonNavbar>
+            <AnimatePresence>
+                {isClosed ? (
+                    ""
+                ) : (
+                    <motion.div
+                        className="grid grid-flow-row grid-cols-1 grid-rows-4 absolute bg-jsDark lg:hidden w-full z-10 top-20 pb-4"
+                        initial={{ x: "-100%" }}
+                        animate={{ x: 0 }}
+                        exit={{ x: "-100%" }}
+                    >
+                        <ButtonNavbar
+                            className="z-10"
+                            onClick={() => router.push("/")}
+                        >
+                            Homepage
+                        </ButtonNavbar>
 
-                    <ButtonNavbar onClick={() => router.push("/projects")}>
-                        Projects
-                    </ButtonNavbar>
-                    <ButtonNavbar onClick={() => router.push("/...")}>
-                        Github
-                    </ButtonNavbar>
+                        <ButtonNavbar onClick={() => router.push("/projects")}>
+                            Projects
+                        </ButtonNavbar>
+                        <ButtonNavbar onClick={() => router.push("/...")}>
+                            Github
+                        </ButtonNavbar>
 
-                    <ButtonNavbar onClick={() => router.push("/about")}>
-                        About me
-                    </ButtonNavbar>
-                </div>
-            )}
+                        <ButtonNavbar onClick={() => router.push("/about")}>
+                            Contact to me
+                        </ButtonNavbar>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
