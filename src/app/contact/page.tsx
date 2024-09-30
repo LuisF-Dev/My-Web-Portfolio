@@ -2,12 +2,16 @@
 
 import { jetbrains, playpen_Sans } from "@/fonts";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gradient, gradient_text } from "../ClassesTailwind";
 import { useRouter } from "next/navigation";
 import Name from "../components/contact/Name";
 import Reason from "../components/contact/Reason";
+
 import Message from "../components/contact/Message";
+
+import ReCAPTCHA from "react-google-recaptcha";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ContactForm = () => {
     const [name, setName] = useState<string>("");
@@ -15,8 +19,15 @@ const ContactForm = () => {
     const [message, setMessage] = useState<string>("");
     const [isSend, setIsSend] = useState<string | undefined>(undefined);
     const [isSending, setIsSending] = useState(false);
+    const [wasResolved, setWasResolved] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
     const router = useRouter();
-
+    const ref = useRef<HTMLDivElement | null>(null);
+    useEffect(() => {
+        ref.current?.scrollIntoView({ behavior: "smooth" });
+    }, [isSend]);
+    {
+    }
     return (
         <>
             <form
@@ -24,21 +35,25 @@ const ContactForm = () => {
                 onSubmit={async (e) => {
                     e.preventDefault();
                     setIsSending(true);
+                    if (wasResolved) {
+                        const res = await fetch(
+                            "http://localhost:3000/api/contactme",
+                            {
+                                method: "POST",
+                                body: JSON.stringify({ name, reason, message }),
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                            }
+                        );
 
-                    const res = await fetch(
-                        "http://localhost:3000/api/contactme",
-                        {
-                            method: "POST",
-                            body: JSON.stringify({ name, reason, message }),
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
+                        if (res.ok) {
+                            await setIsSend("success");
+                            await setTimeout(() => router.push("/"), 4000);
                         }
-                    );
-
-                    if (res.ok) {
-                        await setIsSend("success");
-                        await setTimeout(() => router.push("/"), 4000);
+                    } else {
+                        setIsSending(false);
+                        setShowAlert(true);
                     }
                 }}
             >
@@ -52,49 +67,77 @@ const ContactForm = () => {
                     Contact Me
                 </h1>
                 <Name onChange={(e) => setName(e.target.value)} name={name} />
-
                 <Reason
                     reason={reason}
                     onChange={(e) => setReason(e.target.value)}
                 />
-
                 <Message
                     message={message}
                     onChange={(e) => setMessage(e.target.value)}
                 />
-
+                <ReCAPTCHA
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    onChange={() => {
+                        setWasResolved(true);
+                        setShowAlert(false);
+                    }}
+                />{" "}
+                <AnimatePresence>
+                    {showAlert ? (
+                        <motion.div
+                            className={clsx(
+                                "font-semibold",
+                                jetbrains.className
+                            )}
+                            initial={{ opacity: 0, y: "-100%" }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: "-100%" }}
+                        >
+                            Resuelve el captcha por favor
+                        </motion.div>
+                    ) : (
+                        ""
+                    )}
+                </AnimatePresence>
                 <button
                     type="submit"
                     className={clsx(
                         gradient,
-                        "w-full  text-black font-bold py-2 px-4 rounded-md  hover:bg-zinc-800 hover:text-white transition hover:to-transparent hover:from-transparent disabled:to-transparent disabled:from-transparent disabled:bg-gray-500 disabled:text-gray-700"
+                        "w-full  text-black font-bold py-2 px-4 rounded-md mt-3 hover:bg-zinc-800 hover:text-white transition hover:to-transparent hover:from-transparent disabled:to-transparent disabled:from-transparent disabled:bg-gray-500 disabled:text-gray-700"
                     )}
                     disabled={isSending}
                 >
                     Send Message
                 </button>
             </form>
-            {!isSend ? (
-                ""
-            ) : isSend === "error" ? (
-                <div
-                    className={clsx(
-                        jetbrains.className,
-                        "text-center text-3xl my-10"
-                    )}
-                >
-                    errr
-                </div>
-            ) : (
-                <div
-                    className={clsx(
-                        jetbrains.className,
-                        "text-center text-3xl my-10"
-                    )}
-                >
-                    The message has been sent successfully
-                </div>
-            )}
+            <AnimatePresence>
+                {!isSend ? (
+                    ""
+                ) : isSend === "error" ? (
+                    <div
+                        className={clsx(
+                            jetbrains.className,
+                            "text-center text-3xl my-10"
+                        )}
+                    >
+                        errr
+                    </div>
+                ) : (
+                    <motion.div
+                        ref={ref}
+                        className={clsx(
+                            jetbrains.className,
+                            "text-center text-3xl my-10"
+                        )}
+                        initial={{ opacity: 0, y: "-100%" }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: "-100%" }}
+                        transition={{ duration: 1 }}
+                    >
+                        The message has been sent successfully
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 };
