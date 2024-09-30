@@ -21,19 +21,21 @@ const ContactForm = () => {
                 onSubmit={async (e) => {
                     e.preventDefault();
                     setIsSending(true);
-                    try {
-                        await fetch("http://localhost:3000/api/contactme", {
+
+                    const res = await fetch(
+                        "http://localhost:3000/api/contactme",
+                        {
                             method: "POST",
                             body: JSON.stringify({ name, reason, message }),
                             headers: {
                                 "Content-Type": "application/json",
                             },
-                        });
+                        }
+                    );
+
+                    if (res.ok) {
                         await setIsSend("success");
                         await setTimeout(() => router.push("/"), 4000);
-                    } catch (err) {
-                        console.log(err);
-                        setIsSend("error");
                     }
                 }}
             >
