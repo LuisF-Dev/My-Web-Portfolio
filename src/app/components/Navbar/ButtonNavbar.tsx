@@ -15,7 +15,7 @@ function ButtonNavbar({ onClick, className, children }: props) {
             className={clsx(
                 jetbrains.className,
                 styleButton,
-                "inline-block",
+                "inline-block rounded-lg ",
                 className
             )}
             onClick={onClick}

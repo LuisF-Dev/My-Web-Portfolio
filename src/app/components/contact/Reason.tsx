@@ -1,5 +1,6 @@
 import { jetbrains } from "@/fonts";
 import clsx from "clsx";
+
 import React from "react";
 
 type reasonProps = {
@@ -22,7 +23,7 @@ function Reason({ reason, onChange }: reasonProps) {
                 id="reason"
                 value={reason}
                 onChange={onChange}
-                className="w-full px-3 py-2 border border-gray-300 text-black rounded-md"
+                className="w-full px-3 py-2 outline-none border border-transparent text-white bg-black transition-all duration-150 border-gray-300 rounded-md"
                 required
             >
                 <option value="">Select a reason</option>

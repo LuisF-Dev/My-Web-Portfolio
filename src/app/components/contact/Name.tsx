@@ -13,7 +13,7 @@ function Name({ name, onChange }: onchange) {
             <label
                 className={clsx(
                     jetbrains.className,
-                    "block text-white text-sm font-bold mb-2"
+                    "block text-white  text-sm font-bold mb-2"
                 )}
                 htmlFor="recipient"
             >
@@ -25,7 +25,7 @@ function Name({ name, onChange }: onchange) {
                 placeholder="Name"
                 value={name}
                 onChange={onChange}
-                className="w-full px-3 py-2 border text-black border-gray-300 rounded-md"
+                className="w-full px-3 py-2 outline-none border border-transparent text-white bg-black  focus:border-yellow-500 transition-all duration-150 rounded-md"
                 required
             />
         </div>

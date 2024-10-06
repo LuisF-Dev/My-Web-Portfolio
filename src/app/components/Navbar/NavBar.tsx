@@ -9,7 +9,7 @@ import translate from "@/public/images/traducir.png";
 import menuDesplegable from "@/public/images/menu-desplegable.png";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import ButtonNavbar from "./Button";
+import ButtonNavbar from "./ButtonNavbar";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,7 +18,7 @@ function Navbar() {
     const [isClosed, setIsClosed] = useState(true);
 
     return (
-        <div className="bg-jsDark py-4 flex flex-row items-center justify-between z-40">
+        <div className="bg-gray-900 shadow-sm  drop-shadow-xl py-4 flex flex-row items-center justify-between z-40">
             <div
                 className={clsx(
                     "px-3 text-3xl font-semibold z-40  from-orange-500 to-jsYellow bg-gradient-to-b bg-clip-text text-transparent",

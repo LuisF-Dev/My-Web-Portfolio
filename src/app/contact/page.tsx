@@ -3,7 +3,7 @@
 import { jetbrains, playpen_Sans } from "@/fonts";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
-import { gradient, gradient_text } from "../ClassesTailwind";
+import { gradient_text } from "../ClassesTailwind";
 import { useRouter } from "next/navigation";
 import Name from "../components/contact/Name";
 import Reason from "../components/contact/Reason";
@@ -14,10 +14,18 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThreeDots } from "react-loader-spinner";
 
+interface formFields {
+    name: string;
+    reason: string;
+    message: string;
+}
+
 const ContactForm = () => {
-    const [name, setName] = useState<string>("");
-    const [reason, setReason] = useState<string>("");
-    const [message, setMessage] = useState<string>("");
+    const [formFields, setFormFields] = useState<formFields>({
+        name: "",
+        reason: "",
+        message: "",
+    });
     const [isSend, setIsSend] = useState<string | undefined>(undefined);
     const [isSending, setIsSending] = useState(false);
     const [wasResolved, setWasResolved] = useState(false);
@@ -27,12 +35,11 @@ const ContactForm = () => {
     useEffect(() => {
         ref.current?.scrollIntoView({ behavior: "smooth" });
     }, [isSend]);
-    {
-    }
+
     return (
         <>
             <form
-                className="max-w-2xl w-4/5 md:w-2/4 lg:w-1/3 mx-auto p-6 my-6 bg-jsGray rounded-lg shadow-lg"
+                className="max-w-2xl w-4/5 md:w-2/4 lg:w-1/3 mx-auto p-6 my-6 bg-gray-900 rounded-lg shadow-lg"
                 onSubmit={async (e) => {
                     e.preventDefault();
                     setIsSending(true);
@@ -41,7 +48,7 @@ const ContactForm = () => {
                             "https://luisf-dev.vercel.app/api/contactme",
                             {
                                 method: "POST",
-                                body: JSON.stringify({ name, reason, message }),
+                                body: JSON.stringify(formFields),
                                 headers: {
                                     "Content-Type": "application/json",
                                 },
@@ -67,17 +74,30 @@ const ContactForm = () => {
                 >
                     Contact Me
                 </h1>
-                <Name onChange={(e) => setName(e.target.value)} name={name} />
+                <Name
+                    onChange={(e) =>
+                        setFormFields({ ...formFields, name: e.target.value })
+                    }
+                    name={formFields.name}
+                />
                 <Reason
-                    reason={reason}
-                    onChange={(e) => setReason(e.target.value)}
+                    reason={formFields.reason}
+                    onChange={(e) =>
+                        setFormFields({ ...formFields, reason: e.target.value })
+                    }
                 />
                 <Message
-                    message={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    message={formFields.message}
+                    onChange={(e) =>
+                        setFormFields({
+                            ...formFields,
+                            message: e.target.value,
+                        })
+                    }
                 />
                 <ReCAPTCHA
                     sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    theme="dark"
                     onChange={() => {
                         setWasResolved(true);
                         setShowAlert(false);
@@ -103,8 +123,7 @@ const ContactForm = () => {
                 <button
                     type="submit"
                     className={clsx(
-                        gradient,
-                        "w-full  text-black font-bold py-2 px-4 rounded-md mt-3 hover:bg-zinc-800 hover:text-white transition hover:to-transparent hover:from-transparent disabled:to-transparent disabled:from-transparent disabled:bg-gray-500 disabled:text-gray-700 flex flex-row items-center"
+                        "w-full bg-yellow-500 text-black font-bold py-2 px-4 rounded-md mt-3 hover:bg-zinc-800 hover:text-white transition hover:to-transparent hover:from-transparent disabled:to-transparent disabled:from-transparent disabled:bg-gray-500 disabled:text-gray-700 flex flex-row items-center"
                     )}
                     disabled={isSending}
                 >

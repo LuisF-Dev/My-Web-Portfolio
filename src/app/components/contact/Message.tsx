@@ -23,7 +23,7 @@ function Message({ message, onChange }: Message) {
                 placeholder="Write your message here..."
                 value={message}
                 onChange={onChange}
-                className="w-full px-3 py-2 border text-black border-gray-300 rounded-md"
+                className="w-full px-3 outline-none border border-transparent text-white bg-black  focus:border-yellow-500 transition-all duration-150 py-2  border-gray-300 rounded-md"
                 rows={5}
                 required
             ></textarea>

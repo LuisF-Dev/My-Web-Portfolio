@@ -20,7 +20,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`flex flex-col antialiased from-gray-800 to-black bg-gradient-to-b min-h-screen `}
+                className={`flex flex-col antialiased bg-gradient-to-br from-gray-900 min-h-screen `}
             >
                 <Navbar />
                 {children}

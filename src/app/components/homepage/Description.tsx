@@ -6,7 +6,7 @@ import Image from "next/image";
 
 function Description() {
     return (
-        <div className="flex flex-row mx-5 p-4 m-3 mb-9">
+        <div className="flex flex-row mx-5 p-4 m-3 mb-5">
             <div
                 className={clsx(
                     jetbrains.className,
