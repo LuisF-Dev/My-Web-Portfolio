@@ -67,7 +67,7 @@ function Navbar() {
                     ""
                 ) : (
                     <motion.div
-                        className="grid grid-flow-row grid-cols-1 grid-rows-4 absolute bg-jsDark lg:hidden w-full z-10 top-20 pb-4"
+                        className="grid grid-flow-row grid-cols-1 grid-rows-4 absolute bg-gray-900 lg:hidden w-full z-10 top-20 pb-4"
                         initial={{ x: "-100%" }}
                         animate={{ x: 0 }}
                         exit={{ x: "-100%" }}
