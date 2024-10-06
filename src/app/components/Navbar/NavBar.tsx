@@ -86,8 +86,8 @@ function Navbar() {
                             Github
                         </ButtonNavbar>
 
-                        <ButtonNavbar onClick={() => router.push("/about")}>
-                            Contact to me
+                        <ButtonNavbar onClick={() => router.push("/contact")}>
+                            Contact me
                         </ButtonNavbar>
                     </motion.div>
                 )}
